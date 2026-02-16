@@ -76,4 +76,82 @@
 
         .letter p {
             font-size: 14px;
-            line-height: 1
+            line-height: 1.5;
+            color: var(--text-color);
+            margin: 0;
+            text-align: left;
+        }
+
+        .flap {
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 45vw solid transparent;
+            border-right: 45vw solid transparent;
+            border-top: 110px solid var(--env-color);
+            transform-origin: top;
+            transition: transform 0.5s ease, z-index 0.5s;
+            z-index: 3;
+        }
+
+        @media (min-width: 355px) {
+            .flap {
+                border-left: 160px solid transparent;
+                border-right: 160px solid transparent;
+            }
+        }
+
+        /* Front Pocket */
+        .envelope-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(35deg, var(--env-dark) 50%, transparent 50.5%),
+                linear-gradient(-35deg, var(--env-dark) 50%, transparent 50.5%);
+            background-repeat: no-repeat;
+            z-index: 2;
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* Open Animations */
+        .envelope-wrapper.open .flap {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+
+        .envelope-wrapper.open .letter {
+            transform: translateY(-160px); /* Slides up further for readability */
+            z-index: 5;
+            height: auto;
+            min-height: 200px;
+        }
+
+        .envelope-wrapper.open .heart {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="envelope-wrapper" onclick="this.classList.toggle('open')">
+        <div class="flap"></div>
+        <div class="heart"></div>
+        <div class="letter">
+            <p>
+                <strong>My Dearest,</strong><br><br>
+                I promise to never repeat the mistakes I’ve made, especially the cheating and letting my eyes wander. 
+                I want to be the boyfriend you deserve and a man your parents can be proud of. <br><br>
+                I know I have to earn their trust back through hard work and consistency, and I’m ready to do that. 
+                I want to dedicate everything I have to your happiness—not just to impress you as we start over, 
+                but because I’ve truly learned from my mistakes. <br><br>
+                I’m saying this because I want us to be together for a long, long time.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
