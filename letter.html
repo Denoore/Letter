@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Promise to You</title>
+    <style>
+        :root {
+            --env-color: #ffadad; /* Soft Pink/Red */
+            --env-dark: #ff8585;
+            --paper: #ffffff;
+            --text-color: #4a4a4a;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fff1f1;
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            width: 90vw;
+            max-width: 320px;
+            height: 220px;
+            background-color: var(--env-dark);
+            cursor: pointer;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* The Heart Seal */
+        .heart {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background: #d00000;
+            transform: translate(-50%, -50%) rotate(45deg);
+            z-index: 4;
+            transition: opacity 0.3s;
+        }
+        .heart::before, .heart::after {
+            content: "";
+            width: 30px;
+            height: 30px;
+            background: #d00000;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart::before { left: -15px; }
+        .heart::after { top: -15px; }
+
+        .letter {
+            position: absolute;
+            top: 10px;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            background: var(--paper);
+            z-index: 1;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            overflow-y: auto; /* Allows scrolling if text is long */
+        }
+
+        .letter p {
+            font-size: 14px;
+            line-height: 1
